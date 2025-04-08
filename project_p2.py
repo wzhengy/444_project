@@ -78,13 +78,13 @@ if st.button("Predict Outcome"):
         
         st.write("# Winner:", winner_text)
         st.write("Prediction probabilities:")
-        col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns([0.6, 1])
         with col1:
             st.write(f"- {p1_display} Wins:")
         with col2:
             st.write(f"{(proba_dict['First Pokémon wins']*100):.2f}%")
         
-        col3, col4 = st.columns([1, 1])
+        col3, col4 = st.columns([0.6, 1])
         with col3:
             st.write(f"- {p2_display} Wins:")
         with col4:
