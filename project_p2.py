@@ -88,6 +88,18 @@ if st.button("Predict Outcome"):
         st.write("")
         st.write("")
         st.write("Prediction probabilities:")
-        st.write(f"- {p1_display}:",proba_dict["First Pokémon wins"])
-        st.write(f"- {p2_display}:", proba_dict["Second Pokémon wins"])
-        st.image("./PokeSightFeatureImportances.png", caption="Feature Importances", width=600)
+        col1, col2 = st.columns([0.4, 1])
+        with col1:
+            st.write(f"- {p1_display} Wins:")
+        with col2:
+            st.write(f"{(proba_dict['First Pokémon wins']*100):.2f}%")
+        
+        col3, col4 = st.columns([0.4, 1])
+        with col3:
+            st.write(f"- {p2_display} Wins:")
+        with col4:
+            st.write(f"{(proba_dict['Second Pokémon wins']*100):.2f}%")
+        st.write("")
+        st.write("")
+        st.write("Feature Importances:")
+        st.image("./PokeSightFeatureImportances.png", width=600)
