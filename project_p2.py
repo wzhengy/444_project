@@ -31,8 +31,8 @@ if not p1_candidates.empty and not p2_candidates.empty:
     p2_display = p2_candidates["Name"].iloc[0]
     
     # Construct image URLs (replace spaces with hyphens, etc.)
-    p1_url = f"https://img.pokemondb.net/artwork/avif/{p1_display.lower().replace(' ', '-')}.avif"
-    p2_url = f"https://img.pokemondb.net/artwork/avif/{p2_display.lower().replace(' ', '-')}.avif"
+    p1_url = f"https://img.pokemondb.net/artwork/large/{p1_display.lower().replace(' ', '-')}.jpg"
+    p2_url = f"https://img.pokemondb.net/artwork/large/{p2_display.lower().replace(' ', '-')}.jpg"
     
     # Display the images side by side using Streamlit columns
     col1, col2, col3 = st.columns(3)
