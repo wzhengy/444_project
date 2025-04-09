@@ -2,6 +2,23 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+# Function to retrieve image
+def get_image_url(name):
+    words = name.strip().split()
+
+    if len(words) >= 2 and words[0].lower() == "mega":
+        base_name = words[1].lower()
+
+        if len(words) > 2:
+            extra = "-".join(word.lower() for word in words[2:])
+            formatted_name = f"{base_name}-mega-{extra}"
+        else:
+            formatted_name = f"{base_name}-mega"
+    else:
+        formatted_name = name.strip().lower().replace(" ", "-")
+    print("printing: " + formatted_name)
+    return f"https://img.pokemondb.net/artwork/avif/{formatted_name}.avif"
+
 # Load the saved model (pipeline)
 model = joblib.load("best_model.joblib")
 
@@ -30,28 +47,9 @@ if not p1_candidates.empty and not p2_candidates.empty:
     p1_display = p1_candidates["Name"].iloc[0]
     p2_display = p2_candidates["Name"].iloc[0]
     
-    # Construct image URLs (replace spaces with hyphens, etc.), account for Mega evolutions
-    if 'mega' not in p1_display.lower():
-        p1_url = f"https://img.pokemondb.net/artwork/large/{p1_display.lower().replace(' ', '-')}.jpg"
-    elif ('mega' in p2_display.lower() and 'x' in p2_display.lower()) or ('mega' in p2_display.lower() and 'y' in p2_display.lower()):
-        p1_name_parts = p1_display.lower().split()
-        p1_name_parts = [p1_name_parts[1], p1_name_parts[0], p1_name_parts[2]]
-        p1_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p1_name_parts)}.jpg"
-    else:
-        p1_name_parts = p1_display.lower().split()
-        p1_name_parts = [p1_name_parts[1], p1_name_parts[0]]
-        p1_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p1_name_parts)}.jpg"
-    
-    if 'mega' not in p2_display.lower():
-        p2_url = f"https://img.pokemondb.net/artwork/large/{p2_display.lower().replace(' ', '-')}.jpg"
-    elif ('mega' in p2_display.lower() and 'x' in p2_display.lower()) or ('mega' in p2_display.lower() and 'y' in p2_display.lower()):
-        p2_name_parts = p2_display.lower().split()
-        p2_name_parts = [p2_name_parts[1], p2_name_parts[0], p2_name_parts[2]]
-        p2_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p2_name_parts)}.jpg"
-    else:
-        p2_name_parts = p2_display.lower().split()
-        p2_name_parts = [p2_name_parts[1], p2_name_parts[0]]
-        p2_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p2_name_parts)}.jpg"
+    # Construct image URLs (replace spaces with hyphens, etc.)
+    p1_url = get_image_url(p1_display)
+    p2_url = get_image_url(p2_display)
     
     # Display the images side by side using Streamlit columns
     col1, col2, col3 = st.columns(3)
