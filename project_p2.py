@@ -14,6 +14,10 @@ def get_image_url(name):
             formatted_name = f"{base_name}-mega-{extra}"
         else:
             formatted_name = f"{base_name}-mega"
+    elif len(words) >= 2 and words[-1].lower() == "forme":
+        first_part = words[0].lower()
+        second_part = words[1].lower()
+        formatted_name = f"{first_part}-{second_part}"
     else:
         formatted_name = name.strip().lower().replace(" ", "-")
     print("printing: " + formatted_name)
