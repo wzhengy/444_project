@@ -55,7 +55,7 @@ if not p1_candidates.empty and not p2_candidates.empty:
         <style>
         /* This CSS targets the Streamlit button container and changes the button appearance */
         div.stButton > button {
-            background-color: #bbffbb;
+            background-color: #77ff77;
             color: white;
             border-radius: 8px;
             padding: 10px 20px;
@@ -63,8 +63,15 @@ if not p1_candidates.empty and not p2_candidates.empty:
             font-size: 16px;
         }
         div.stButton > button:hover {
-            background-color: #99dd99;  
+            background-color: #33ff33;  
             color: white;
+        }
+        div.stButton > button:active,
+        div.stButton > button:focus {
+            background-color: #77ff77;
+            color: white;
+            outline: none;
+            box-shadow: none;
         }
         </style>
         """,
