@@ -11,7 +11,12 @@ model = joblib.load("best_model.joblib")
 pokemon_stats = pd.read_csv("pokemon.csv")
 pokemon_stats['Type2'] = pokemon_stats['Type2'].fillna("None")
 
-st.title("Pokémon Battle Predictor")
+st.set_page_config(
+    page_title="Pokésight",
+    page_icon=":red_circle:",
+)
+st.title('Pokésight')
+st.write("### Pokémon Battle Predictor")
 st.write("Enter the names of two Pokémon to predict the outcome of a battle.")
 
 # Input fields for Pokémon names
@@ -77,6 +82,12 @@ if st.button("Predict Outcome"):
         col3.image(p2_url, caption=p2_display, width=200)
         
         st.write("# Winner:", winner_text)
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
         st.write("Prediction probabilities:")
-        st.write("- First Pokemon Wins:",proba_dict["First Pokémon wins"])
-        st.write("- Second Pokemon Wins:", proba_dict["Second Pokémon wins"])
+        st.write(f"- {p1_display}:",proba_dict["First Pokémon wins"])
+        st.write(f"- {p2_display}:", proba_dict["Second Pokémon wins"])
+        st.image("./PokeSightFeatureImportances.png", caption="Feature Importances", width=600)
