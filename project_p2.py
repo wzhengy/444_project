@@ -13,7 +13,7 @@ st.set_page_config(
     page_title="Poké Sight",
     page_icon=":red_circle:",
 )
-st.title('Pokésight')
+st.title('Poké Sight')
 st.write("### Pokémon Battle Predictor")
 st.write("Enter two Pokémon to battle and predict the winner!")
 
