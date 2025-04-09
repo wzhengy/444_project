@@ -51,9 +51,7 @@ if not p1_candidates.empty and not p2_candidates.empty:
     col3.image(p2_url, caption=p2_display, width=200)
 
 # Prediction section: Only runs when the button is clicked
-col1, col2, col3 = st.columns([2, 1, 2])
-with col2:
-    if st.button("Predict Outcome"):
+    if st.button("Battle!"):
         # Match Pokémon by name (case-insensitive) again to get the proper rows
         p1 = pokemon_stats[pokemon_stats["Name"].str.lower() == p1_name_input.strip().lower()]
         p2 = pokemon_stats[pokemon_stats["Name"].str.lower() == p2_name_input.strip().lower()]
