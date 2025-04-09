@@ -49,7 +49,27 @@ if not p1_candidates.empty and not p2_candidates.empty:
             </div>
             """, unsafe_allow_html=True)
     col3.image(p2_url, caption=p2_display, width=200)
-
+    
+    st.markdown(
+        """
+        <style>
+        /* This CSS targets the Streamlit button container and changes the button appearance */
+        div.stButton > button {
+            background-color: #FF4B4B;  
+            color: white;               
+            border-radius: 8px;         
+            padding: 10px 20px;         
+            border: none;               
+            font-size: 16px;            
+        }
+        div.stButton > button:hover {
+            background-color: #FF6B6B;  
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
 # Prediction section: Only runs when the button is clicked
     if st.button("Battle!"):
         # Match Pokémon by name (case-insensitive) again to get the proper rows
