@@ -30,9 +30,28 @@ if not p1_candidates.empty and not p2_candidates.empty:
     p1_display = p1_candidates["Name"].iloc[0]
     p2_display = p2_candidates["Name"].iloc[0]
     
-    # Construct image URLs (replace spaces with hyphens, etc.)
-    p1_url = f"https://img.pokemondb.net/artwork/large/{p1_display.lower().replace(' ', '-')}.jpg"
-    p2_url = f"https://img.pokemondb.net/artwork/large/{p2_display.lower().replace(' ', '-')}.jpg"
+    # Construct image URLs (replace spaces with hyphens, etc.), account for Mega evolutions
+    if 'mega' not in p1_display.lower():
+        p1_url = f"https://img.pokemondb.net/artwork/large/{p1_display.lower().replace(' ', '-')}.jpg"
+    elif 'mega x' or 'mega y' in p1_display.lower():
+        p1_name_parts = p1_display.lower().split()
+        p1_name_parts = [p1_name_parts[1], p1_name_parts[0], p1_name_parts[2]]
+        p1_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p1_name_parts)}.jpg"
+    else:
+        p1_name_parts = p1_display.lower().split()
+        p1_name_parts = [p1_name_parts[1], p1_name_parts[0]]
+        p1_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p1_name_parts)}.jpg"
+    
+    if 'mega' not in p2_display.lower():
+        p2_url = f"https://img.pokemondb.net/artwork/large/{p2_display.lower().replace(' ', '-')}.jpg"
+    elif 'mega x' or 'mega y' in p2_display.lower():
+        p2_name_parts = p1_display.lower().split()
+        p2_name_parts = [p2_name_parts[1], p2_name_parts[0], p2_name_parts[2]]
+        p2_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p2_name_parts)}.jpg"
+    else:
+        p2_name_parts = p2_display.lower().split()
+        p2_name_parts = [p2_name_parts[1], p2_name_parts[0]]
+        p2_url = f"https://img.pokemondb.net/artwork/large/{'-'.join(p2_name_parts)}.jpg"
     
     # Display the images side by side using Streamlit columns
     col1, col2, col3 = st.columns(3)
