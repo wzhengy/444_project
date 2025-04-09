@@ -94,6 +94,7 @@ if st.button("Battle"):
         st.write("")
         st.write("")
         # Display prediction probabilities using columns with custom spacing
+        st.write("Prediction Probabilities:")
         col1, col2 = st.columns([0.4, 1])
         with col1:
             st.write(f"- {p1_display} Wins:")
