@@ -15,7 +15,7 @@ st.set_page_config(
 )
 st.title('Pokésight')
 st.write("### Pokémon Battle Predictor")
-st.write("Enter two Pokémon to battle and predict the winner.")
+st.write("Enter two Pokémon to battle and predict the winner!")
 
 # Input fields for Pokémon names (updates trigger re-run)
 p1_name_input = st.text_input("Enter the name of the first Pokémon", value="Bulbasaur", key="p1")
