@@ -10,7 +10,7 @@ pokemon_stats = pd.read_csv("pokemon.csv")
 pokemon_stats['Type2'] = pokemon_stats['Type2'].fillna("None")
 
 st.set_page_config(
-    page_title="Pokésight",
+    page_title="Poké Sight",
     page_icon=":red_circle:",
 )
 st.title('Pokésight')
