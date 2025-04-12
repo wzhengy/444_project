@@ -15,9 +15,35 @@ def get_image_url(name):
         else:
             formatted_name = f"{base_name}-mega"
     elif len(words) >= 2 and words[-1].lower() == "forme":
-        first_part = words[0].lower()
-        second_part = words[1].lower()
-        formatted_name = f"{first_part}-{second_part}"
+        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
+    elif len(words) >= 2 and words[0].lower() == "primal":
+        formatted_name = f"{words[1].lower()}-{words[0].lower()}"
+    elif len(words) >= 2 and words[0].lower() == "mr.":
+        formatted_name = f"{words[0].lower().replace(".","")}-{words[1].lower()}"
+    elif len(words) >= 2 and words[1].lower() == "jr.":
+        formatted_name = f"{words[0].lower()}-{words[1].lower().replace(".","")}"
+    elif len(words) >= 2 and words[0].lower() == "wormadam":
+        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
+    elif len(words) >= 2 and words[-1].lower() == "rotom":
+        formatted_name = f"{words[1].lower()}-{words[0].lower()}"
+    elif len(words) >= 2 and words[-1].lower() == "size":
+        formatted_name = f"{words[0].lower()}"
+    elif len(words) >= 2 and words[-1].lower() == "mode":
+        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
+    elif len(words) >= 2 and words[-1].lower() == "kyurem":
+        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
+    elif len(words) >= 2 and words[-1].lower() == "forme":
+        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
+    elif len(words) >= 3 and words[0].lower() == "zygarde":
+        if words[1].lower() == "half":
+            formatted_name = f"{words[0].lower()}-50"
+        elif words[1].lower() == "complete":
+            formatted_name = f"{words[0].lower()}-100"
+        else:
+            formatted_name = f"{words[0].lower()}-10"
+    elif len(words) >= 2 and words[0].lower() == "zygarde":
+        formatted_name = f"{words[0].lower()}-50"
+        
     else:
         formatted_name = name.strip().lower().replace(" ", "-")
     print("printing: " + formatted_name)
