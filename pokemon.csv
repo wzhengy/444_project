@@ -33,10 +33,10 @@
 32,Raichu,Electric,,60,90,55,90,80,110,1,False
 33,Sandshrew,Ground,,50,75,85,20,30,40,1,False
 34,Sandslash,Ground,,75,100,110,45,55,65,1,False
-35,Nidoran♀,Poison,,55,47,52,40,40,41,1,False
+35,Nidoran F,Poison,,55,47,52,40,40,41,1,False
 36,Nidorina,Poison,,70,62,67,55,55,56,1,False
 37,Nidoqueen,Poison,Ground,90,92,87,75,85,76,1,False
-38,Nidoran♂,Poison,,46,57,40,40,40,50,1,False
+38,Nidoran M,Poison,,46,57,40,40,40,50,1,False
 39,Nidorino,Poison,,61,72,57,55,55,65,1,False
 40,Nidoking,Poison,Ground,81,102,77,85,75,85,1,False
 41,Clefairy,Fairy,,70,45,48,60,65,35,1,False
@@ -736,7 +736,7 @@
 735,Vivillon,Bug,Flying,80,52,50,90,50,89,6,False
 736,Litleo,Fire,Normal,62,50,58,73,54,72,6,False
 737,Pyroar,Fire,Normal,86,68,72,109,66,106,6,False
-738,Flabébé,Fairy,,44,38,39,61,79,42,6,False
+738,Flabebe,Fairy,,44,38,39,61,79,42,6,False
 739,Floette,Fairy,,54,45,47,75,98,52,6,False
 740,Florges,Fairy,,78,65,68,112,154,75,6,False
 741,Skiddo,Grass,,66,65,48,62,57,52,6,False
