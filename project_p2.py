@@ -4,50 +4,59 @@ import joblib
 
 # Function to retrieve image
 def get_image_url(name):
-    words = name.strip().split()
+    words = name.lower().strip().split()
 
-    if len(words) >= 2 and words[0].lower() == "mega":
-        base_name = words[1].lower()
-
-        if len(words) > 2:
-            extra = "-".join(word.lower() for word in words[2:])
-            formatted_name = f"{base_name}-mega-{extra}"
+    if len(words) >= 2:
+        if words[0] == "mega":
+            base_name = words[1]
+            if len(words) > 2:
+                extra = "-".join(word.lower() for word in words[2:])
+                formatted_name = f"{base_name}-mega-{extra}"
+            else:
+                formatted_name = f"{base_name}-mega"
+        elif len(words) >= 2 and words[0] == "zygarde":
+            if words[1] == "half":
+                formatted_name = f"{words[0]}-50"
+            elif words[1] == "complete":
+                formatted_name = f"{words[0]}-100"
+            else:
+                formatted_name = f"{words[0]}-10"
+        elif words[-1] == "forme":
+            formatted_name = f"{words[0]}-{words[1]}"
+        elif words[0] == "primal":
+            formatted_name = f"{words[1]}-{words[0]}"
+        elif words[0] == "mr.":
+            formatted_name = f"{words[0].replace('.','')}-{words[1]}"
+        elif words[1] == "jr.":
+            formatted_name = f"{words[0]}-{words[1].replace('.','')}"
+        elif words[0] == "wormadam":
+            formatted_name = f"{words[0]}-{words[1]}"
+        elif words[-1] == "rotom":
+            formatted_name = f"{words[1]}-{words[0]}"
+        elif words[-1] == "size":
+            formatted_name = f"{words[0]}"
+        elif words[-1] == "mode":
+            formatted_name = f"{words[0]}-{words[1]}"
+        elif words[-1] == "kyurem":
+            formatted_name = f"{words[0]}-{words[1]}"
         else:
-            formatted_name = f"{base_name}-mega"
-    elif len(words) >= 2 and words[-1].lower() == "forme":
-        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
-    elif len(words) >= 2 and words[0].lower() == "primal":
-        formatted_name = f"{words[1].lower()}-{words[0].lower()}"
-    elif len(words) >= 2 and words[0].lower() == "mr.":
-        formatted_name = f"{words[0].lower().replace(".","")}-{words[1].lower()}"
-    elif len(words) >= 2 and words[1].lower() == "jr.":
-        formatted_name = f"{words[0].lower()}-{words[1].lower().replace(".","")}"
-    elif len(words) >= 2 and words[0].lower() == "wormadam":
-        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
-    elif len(words) >= 2 and words[-1].lower() == "rotom":
-        formatted_name = f"{words[1].lower()}-{words[0].lower()}"
-    elif len(words) >= 2 and words[-1].lower() == "size":
-        formatted_name = f"{words[0].lower()}"
-    elif len(words) >= 2 and words[-1].lower() == "mode":
-        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
-    elif len(words) >= 2 and words[-1].lower() == "kyurem":
-        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
-    elif len(words) >= 2 and words[-1].lower() == "forme":
-        formatted_name = f"{words[0].lower()}-{words[1].lower()}"
-    elif len(words) >= 3 and words[0].lower() == "zygarde":
-        if words[1].lower() == "half":
-            formatted_name = f"{words[0].lower()}-50"
-        elif words[1].lower() == "complete":
-            formatted_name = f"{words[0].lower()}-100"
-        else:
-            formatted_name = f"{words[0].lower()}-10"
-    elif len(words) >= 2 and words[0].lower() == "zygarde":
-        formatted_name = f"{words[0].lower()}-50"
+            formatted_name = name.lower().strip().replace(" ", "-")
         
     else:
-        formatted_name = name.strip().lower().replace(" ", "-")
+        if ('♀' in words[0]):
+            formatted_name = f"{words[0].replace('♀','-f')}"
+        elif ('♂' in words[0]):
+            formatted_name = f"{words[0].replace('♂','-m')}"
+        elif ("'" in words[0]):
+            temp = words[0].replace("'", '')
+            formatted_name = f"{temp}"
+        elif ('é' in words[0]):
+            formatted_name = f"{words[0].replace('é','e')}"
+        else:
+            formatted_name = name.lower().strip().replace(" ", "-")
+            
     print("printing: " + formatted_name)
-    return f"https://img.pokemondb.net/artwork/avif/{formatted_name}.avif"
+    return f"https://img.pokemondb.net/artwork/large/{formatted_name}.jpg"
 
 # Load the saved model (pipeline)
 model = joblib.load("best_model.joblib")
